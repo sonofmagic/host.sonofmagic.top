@@ -113,10 +113,16 @@ importers:
       hono:
         specifier: ^4.6.18
         version: 4.6.18
+      punycode:
+        specifier: ^2.3.1
+        version: 2.3.1
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20250124.3
         version: 4.20250124.3
+      '@types/punycode':
+        specifier: ^2.1.4
+        version: 2.1.4
       wrangler:
         specifier: ^3.105.0
         version: 3.105.0(@cloudflare/workers-types@4.20250124.3)
@@ -1977,6 +1983,9 @@ packages:
 
   '@types/parse-path@7.0.3':
     resolution: {integrity: sha512-LriObC2+KYZD3FzCrgWGv/qufdUy4eXrxcLgQMfYXgPbLIecKIsVBaQgUPmxSSLcjmYbDTQbMgr6qr6l/eb7Bg==}
+
+  '@types/punycode@2.1.4':
+    resolution: {integrity: sha512-trzh6NzBnq8yw5e35f8xe8VTYjqM3NE7bohBtvDVf/dtUer3zYTLK1Ka3DG3p7bdtoaOHZucma6FfVKlQ134pQ==}
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -8192,6 +8201,8 @@ snapshots:
   '@types/normalize-package-data@2.4.4': {}
 
   '@types/parse-path@7.0.3': {}
+
+  '@types/punycode@2.1.4': {}
 
   '@types/resolve@1.20.2': {}
 
