@@ -10,33 +10,34 @@ export interface HostKV {
 
 app.get('/', async (ctx) => {
   const domains = await ctx.env.domains.list()
+  const allSettled = await Promise.allSettled(
+    domains.keys.reduce<Promise<HostKV>[]>((acc, { name }) => {
+      acc.push(
+        new Promise<HostKV>((resolve, reject) => {
+          getDnsRecords(
+            name,
+          ).then(
+            (records) => {
+              const firstIpRecord = records
+                .find(x => x.type === 'A')
+              if (firstIpRecord) {
+                resolve({
+                  ip: firstIpRecord.data,
+                  domain: name,
+                })
+              }
+              else {
+                reject(new Error(`No A record found for ${name}`))
+              }
+            },
+          ).catch(reject)
+        }),
+      )
+      return acc
+    }, []),
+  )
   return ctx.text(
-    (await Promise.allSettled(
-      domains.keys.reduce<Promise<HostKV>[]>((acc, { name }) => {
-        acc.push(
-          new Promise<HostKV>((resolve, reject) => {
-            getDnsRecords(
-              name,
-            ).then(
-              (records) => {
-                const firstIpRecord = records
-                  .find(x => x.type === 'A')
-                if (firstIpRecord) {
-                  resolve({
-                    ip: firstIpRecord.data,
-                    domain: name,
-                  })
-                }
-                else {
-                  reject(new Error(`No A record found for ${name}`))
-                }
-              },
-            ).catch(reject)
-          }),
-        )
-        return acc
-      }, []),
-    )).filter(x => x.status === 'fulfilled').map(x => x.value).map(x => `${x.ip} ${x.domain}`).join('\n'),
+    allSettled.filter(x => x.status === 'fulfilled').map(x => x.value).map(x => `${x.ip} ${x.domain}`).join('\n'),
   )
 })
 
