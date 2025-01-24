@@ -1,4 +1,5 @@
 import { Hono } from 'hono'
+import { HTTPException } from 'hono/http-exception'
 import { getDnsRecords } from './get-dns-records'
 
 const app = new Hono<{ Bindings: CloudflareBindings }>()
@@ -36,9 +37,14 @@ app.get('/', async (ctx) => {
       return acc
     }, []),
   )
-  return ctx.text(
-    allSettled.filter(x => x.status === 'fulfilled').map(x => x.value).map(x => `${x.ip} ${x.domain}`).join('\n'),
-  )
+  if (allSettled.every(x => x.status === 'fulfilled')) {
+    return ctx.text(
+      allSettled.filter(x => x.status === 'fulfilled').map(x => x.value).map(x => `${x.ip} ${x.domain}`).join('\n'),
+    )
+  }
+  throw new HTTPException(400, {
+    message: allSettled.filter(x => x.status === 'rejected').map(x => x.reason).join('\n'),
+  })
 })
 
 app.get('/add', async (ctx) => {
