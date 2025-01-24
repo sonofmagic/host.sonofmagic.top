@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["esnext"],
+    "baseUrl": "src",
+    "rootDir": ".",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "types": [
+      "@types/node",
+      "@types/service-worker-mock",
+      "@cloudflare/workers-types/2023-07-01"
+    ],
+    "allowJs": true,
+    "strict": false,
+    "noFallthroughCasesInSwitch": true,
+    "declaration": true,
+    "inlineSourceMap": false,
+    "outDir": "",
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "listEmittedFiles": false,
+    "listFiles": false,
+    "pretty": true,
+    "skipLibCheck": true,
+    "traceResolution": false
+  },
+  "include": ["src", "scripts"],
+  "exclude": ["node_modules", "dist", "tests"]
+}

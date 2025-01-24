@@ -1,0 +1,30 @@
+{
+  "name": "host",
+  "author": "ice breaker <1324318532@qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/cloudflare-workers.git",
+    "directory": "apps/host"
+  },
+  "bugs": {
+    "url": "https://github.com/sonofmagic/cloudflare-workers/issues"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "dev:scheduled": "wrangler dev --test-scheduled",
+    "dev:remote": "wrangler dev --remote",
+    "deploy": "wrangler deploy --minify",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "kv:list": "wrangler kv namespace list | jq \".\"",
+    "d1:create": "wrangler d1 create host-db"
+  },
+  "dependencies": {
+    "hono": "^4.6.19",
+    "punycode": "^2.3.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250124.3",
+    "@types/punycode": "^2.1.4",
+    "wrangler": "^3.99.0"
+  }
+}
