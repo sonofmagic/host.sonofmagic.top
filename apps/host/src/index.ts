@@ -1,4 +1,5 @@
 import { Hono } from 'hono'
+import { getRouterName, showRoutes } from 'hono/dev'
 import { HTTPException } from 'hono/http-exception'
 import { getDnsRecords } from './get-dns-records'
 
@@ -54,6 +55,29 @@ app.get('/add', async (ctx) => {
   }
   ctx.env.domains.put(url, '')
   return ctx.text(`Added ${url}`)
+})
+
+app.get('/clear', async (ctx) => {
+  const domains = await ctx.env.domains.list()
+  await Promise.all(domains.keys.map((x) => {
+    return ctx.env.domains.delete(x.name)
+  }))
+
+  return ctx.text(`clear all ${domains.keys.length}`)
+})
+
+app.get('/dev/getRouterName', async (ctx) => {
+  const str = getRouterName(app)
+  return ctx.text(str)
+})
+
+app.get('/baidu', async (ctx) => {
+  const res = await fetch('https://baidu.com')
+  return ctx.html(await res.text())
+})
+
+showRoutes(app, {
+  verbose: true,
 })
 
 export default app

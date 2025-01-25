@@ -27,7 +27,9 @@ function prepareDnsRecord(record: DnsRecord): DnsRecord {
 
   return record
 }
-
+// https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/
+// https://cloudflare-dns.com/dns-query?name=icebreaker.top&type=A
+// https://github.com/cloudflare/workers-sdk/issues/7835
 export async function dnsRecordsCloudflare(name: string, type: string = 'A'): Promise<DnsRecord[]> {
   const re = await fetch(`https://cloudflare-dns.com/dns-query?name=${toASCII(name)}&type=${type}`, {
     headers: {
