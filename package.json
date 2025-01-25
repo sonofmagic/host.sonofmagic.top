@@ -34,7 +34,6 @@
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.12",
-    "@cloudflare/workers-types": "^4.20250124.3",
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@commitlint/prompt-cli": "^19.7.0",
@@ -65,7 +64,6 @@
     "typescript": "^5.7.3",
     "unbuild": "^3.3.1",
     "vitest": "~3.0.4",
-    "wrangler": "^3.99.0",
     "yaml": "^2.7.0"
   },
   "publishConfig": {

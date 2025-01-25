@@ -14,9 +14,6 @@ importers:
       '@changesets/cli':
         specifier: ^2.27.12
         version: 2.27.12
-      '@cloudflare/workers-types':
-        specifier: ^4.20250124.3
-        version: 4.20250124.3
       '@commitlint/cli':
         specifier: ^19.6.1
         version: 19.6.1(@types/node@22.10.10)(typescript@5.7.3)
@@ -107,9 +104,6 @@ importers:
       vitest:
         specifier: ~3.0.4
         version: 3.0.4(@types/debug@4.1.12)(@types/node@22.10.10)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.7.0)
-      wrangler:
-        specifier: ^3.99.0
-        version: 3.105.0(@cloudflare/workers-types@4.20250124.3)
       yaml:
         specifier: ^2.7.0
         version: 2.7.0
@@ -123,9 +117,15 @@ importers:
         specifier: ^2.3.1
         version: 2.3.1
     devDependencies:
+      '@cloudflare/workers-types':
+        specifier: ^4.20250124.3
+        version: 4.20250124.3
       '@types/punycode':
         specifier: ^2.1.4
         version: 2.1.4
+      wrangler:
+        specifier: ^3.99.0
+        version: 3.105.0(@cloudflare/workers-types@4.20250124.3)
 
   apps/openapi:
     dependencies:
@@ -139,9 +139,18 @@ importers:
         specifier: ^3.23.8
         version: 3.24.1
     devDependencies:
+      '@cloudflare/workers-types':
+        specifier: ^4.20250124.3
+        version: 4.20250124.3
+      '@types/node':
+        specifier: 22.10.10
+        version: 22.10.10
       '@types/service-worker-mock':
         specifier: ^2.0.1
         version: 2.0.4
+      wrangler:
+        specifier: ^3.99.0
+        version: 3.105.0(@cloudflare/workers-types@4.20250124.3)
 
   packages/bar: {}
 

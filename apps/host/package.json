@@ -20,6 +20,8 @@
     "punycode": "^2.3.1"
   },
   "devDependencies": {
-    "@types/punycode": "^2.1.4"
+    "@cloudflare/workers-types": "^4.20250124.3",
+    "@types/punycode": "^2.1.4",
+    "wrangler": "^3.99.0"
   }
 }
