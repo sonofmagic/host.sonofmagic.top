@@ -1,5 +1,14 @@
 {
   "name": "host",
+  "author": "ice breaker <1324318532@qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/cloudflare-workers.git",
+    "directory": "apps/host"
+  },
+  "bugs": {
+    "url": "https://github.com/sonofmagic/cloudflare-workers/issues"
+  },
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy --minify",
