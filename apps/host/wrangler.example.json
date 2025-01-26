@@ -11,6 +11,9 @@
   "observability": {
     "enabled": true
   },
+  "assets": {
+    "directory": "./public/"
+  },
   // "compatibility_flags": [
   //   "nodejs_compat"
   // ],
