@@ -76,7 +76,7 @@ export async function setHostText(env: CloudflareBindings, event?: ScheduledCont
       .map(
         x => `${x.ip} ${x.domain}`,
       )
-      .concat(`\n# ${iSOString}`)
+      .concat(`\n# https://github.com/sonofmagic/cloudflare-workers`, `# ${iSOString}`)
       .join('\n'),
   )
 

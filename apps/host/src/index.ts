@@ -36,11 +36,13 @@ app.get('/clear', async (ctx) => {
 
 app.get('/scheduled', async (ctx) => {
   const { env } = ctx
+
   const { allSettled } = await setHostText(env)
+  const fulfilled = allSettled.filter(x => x.status === 'fulfilled').length
   return ctx.json(
     {
-      fulfilled: allSettled.filter(x => x.status === 'fulfilled').length,
-      rejected: allSettled.filter(x => x.status === 'rejected').length,
+      fulfilled,
+      rejected: allSettled.length - fulfilled,
     },
   )
 })
