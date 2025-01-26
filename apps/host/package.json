@@ -16,7 +16,8 @@
     "deploy": "wrangler deploy --minify",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
     "kv:list": "wrangler kv namespace list | jq \".\"",
-    "d1:create": "wrangler d1 create host-db"
+    "d1:create": "wrangler d1 create host-db",
+    "d1:list": "wrangler d1 list"
   },
   "dependencies": {
     "hono": "^4.6.19",

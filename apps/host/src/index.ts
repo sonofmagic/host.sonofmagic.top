@@ -25,13 +25,20 @@ app.get('/add', async (ctx) => {
   return ctx.text(`Added ${name}, Ip: ${firstIpRecord?.data}`)
 })
 
-app.get('/clear', async (ctx) => {
-  const domains = await ctx.env.domains.list()
-  await Promise.all(domains.keys.map((x) => {
-    return ctx.env.domains.delete(x.name)
+async function clearKV(namespace: KVNamespace<string>) {
+  const list = await namespace.list()
+  await Promise.all(list.keys.map((x) => {
+    return namespace.delete(x.name)
   }))
+  return {
+    count: list.keys.length,
+  }
+}
 
-  return ctx.text(`clear all ${domains.keys.length}`)
+app.get('/clear', async (ctx) => {
+  const { count: domainsCount } = await clearKV(ctx.env.domains)
+  const { count: hostCount } = await clearKV(ctx.env.host)
+  return ctx.text(`clear all domains:${domainsCount}\nclear all host:${hostCount}`)
 })
 
 app.get('/scheduled', async (ctx) => {
