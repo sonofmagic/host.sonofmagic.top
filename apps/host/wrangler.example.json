@@ -18,7 +18,7 @@
   "kv_namespaces": [
     {
       "binding": "domains",
-      "id": "d786c7ad367d4230b5d2d12f590d9d6d"
+      "id": "<KV_NAMESPACE_ID_DEV>>"
     }
   ],
   "env": {
