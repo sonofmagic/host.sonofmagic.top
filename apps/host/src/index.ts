@@ -20,6 +20,7 @@ app.get('/add', async (ctx) => {
   const firstIpRecord = await getFirstIpRecord(name)
   if (firstIpRecord) {
     await env.domains.put(name, firstIpRecord.data)
+    await setHostText(env)
   }
 
   return ctx.text(`Added ${name}, Ip: ${firstIpRecord?.data}`)
