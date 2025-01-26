@@ -10,7 +10,6 @@ function bestDnsResolverForThisRuntime(): string {
   else {
     return 'google-dns'
   }
-  // return 'google-dns'
 }
 
 export async function getDnsRecords(name: string, type: string = 'A', resolver?: string): Promise<DnsRecord[]> {
@@ -63,21 +62,22 @@ export async function setHostText(env: CloudflareBindings, event?: ScheduledCont
     }),
   )
   const iSOString = new Date().toISOString()
+  const hostText = allSettled
+    .filter(
+      x => x.status === 'fulfilled',
+    )
+    .map(
+      x => x.value,
+    )
+    .filter(x => x.ip)
+    .map(
+      x => `${x.ip} ${x.domain}`,
+    )
+    .concat(`\n# https://github.com/sonofmagic/cloudflare-workers`, `# ${iSOString}`)
+    .join('\n')
   await env.host.put(
     HostTextCacheKey,
-    allSettled
-      .filter(
-        x => x.status === 'fulfilled',
-      )
-      .map(
-        x => x.value,
-      )
-      .filter(x => x.ip)
-      .map(
-        x => `${x.ip} ${x.domain}`,
-      )
-      .concat(`\n# https://github.com/sonofmagic/cloudflare-workers`, `# ${iSOString}`)
-      .join('\n'),
+    hostText,
   )
 
   await env.host.put('trigger', event ? 'scheduled' : 'manual')
