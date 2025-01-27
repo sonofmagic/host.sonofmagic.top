@@ -1,0 +1,3 @@
+INSERT
+  OR REPLACE INTO MAP (Domain, Ip)
+VALUES (?, ?)

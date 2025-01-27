@@ -17,7 +17,8 @@
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
     "kv:list": "wrangler kv namespace list | jq \".\"",
     "d1:create": "wrangler d1 create host-db",
-    "d1:list": "wrangler d1 list"
+    "d1:list": "wrangler d1 list",
+    "ci": "tsx scripts/index.ts"
   },
   "dependencies": {
     "hono": "^4.6.19",
@@ -26,6 +27,8 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250124.3",
     "@types/punycode": "^2.1.4",
+    "cloudflare": "^4.0.0",
+    "dotenv": "^16.4.7",
     "wrangler": "^3.99.0"
   }
 }

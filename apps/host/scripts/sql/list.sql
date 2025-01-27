@@ -1,0 +1,3 @@
+SELECT Domain,
+  Ip
+FROM MAP;

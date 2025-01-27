@@ -4,7 +4,7 @@
  */
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "host",
+  "name": "host-api",
   "main": "src/index.ts",
   // https://developers.cloudflare.com/workers/wrangler/install-and-update/
   "compatibility_date": "2025-01-24",
