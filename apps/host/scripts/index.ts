@@ -1,3 +1,4 @@
+import type { QueryResult } from '../src/types'
 import process from 'node:process'
 import Cloudflare from 'cloudflare'
 import { config } from 'dotenv'
@@ -31,9 +32,6 @@ async function query(name: string, params?: string[]) {
   return res
 }
 
-interface QueryResult {
-  results?: Array<{ Domain: string, Ip: string }>
-}
 async function main() {
   config()
   // await query('init.sql')

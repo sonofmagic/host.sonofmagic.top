@@ -17,5 +17,10 @@
       "database_name": "host-db",
       "database_id": "<unique-ID-for-your-database>"
     }
-  ]
+  ],
+  "triggers": {
+    "crons": [
+      "*/10 * * * *"
+    ]
+  }
 }

@@ -14,3 +14,7 @@ export interface HostKV {
   ip: string
   domain: string
 }
+
+export interface QueryResult {
+  results?: Array<{ Domain: string, Ip: string }>
+}
