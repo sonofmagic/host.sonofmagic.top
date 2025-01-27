@@ -4,12 +4,14 @@ import { isDomain } from './utils'
 
 function bestDnsResolverForThisRuntime(): string {
   // @ts-ignore
-  if (globalThis.navigator?.userAgent === 'Cloudflare-Workers') {
-    return 'cloudflare-dns'
-  }
-  else {
-    return 'google-dns'
-  }
+  // if (globalThis.navigator?.userAgent === 'Cloudflare-Workers') {
+  //   return 'cloudflare-dns'
+  // }
+  // else {
+  //   return 'google-dns'
+  // }
+  // peferred cloudflare-dns
+  return 'cloudflare-dns'
 }
 
 export async function getDnsRecords(name: string, type: string = 'A', resolver?: string): Promise<DnsRecord[]> {
@@ -41,48 +43,4 @@ export async function getFirstIpRecord(name: string) {
   const firstIpRecord = records
     .find(x => x.type === 'A')
   return firstIpRecord
-}
-
-export const HostTextCacheKey = 'index'
-
-export async function setHostText(env: CloudflareBindings, event?: ScheduledController) {
-  const domains = await env.domains.list()
-  const allSettled = await Promise.allSettled(
-    domains.keys.map(async ({ name }) => {
-      const firstIpRecord = await getFirstIpRecord(name)
-
-      if (firstIpRecord) {
-        await env.domains.put(name, firstIpRecord.data)
-        return {
-          ip: firstIpRecord.data,
-          domain: name,
-        }
-      }
-      throw new Error(`No A record found for ${name}`)
-    }),
-  )
-  const iSOString = new Date().toISOString()
-  const hostText = allSettled
-    .filter(
-      x => x.status === 'fulfilled',
-    )
-    .map(
-      x => x.value,
-    )
-    .filter(x => x.ip)
-    .map(
-      x => `${x.ip} ${x.domain}`,
-    )
-    .concat(`\n# https://github.com/sonofmagic/cloudflare-workers`, `# ${iSOString}`)
-    .join('\n')
-  await env.host.put(
-    HostTextCacheKey,
-    hostText,
-  )
-
-  await env.host.put('trigger', event ? 'scheduled' : 'manual')
-  await env.host.put('last_updated', iSOString)
-  return {
-    allSettled,
-  }
 }
