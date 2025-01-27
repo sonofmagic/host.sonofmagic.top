@@ -1,4 +1,4 @@
-name: cdn
+name: Deploy Cloudflare CDN
 
 on:
   workflow_dispatch:
