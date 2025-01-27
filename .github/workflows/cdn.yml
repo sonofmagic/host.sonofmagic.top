@@ -39,4 +39,3 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: ./apps/cdn
           command: pages deploy public --project-name=host-pages
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
