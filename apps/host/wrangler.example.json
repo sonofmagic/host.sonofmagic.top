@@ -7,7 +7,7 @@
   "name": "host-api",
   "main": "src/index.ts",
   // https://developers.cloudflare.com/workers/wrangler/install-and-update/
-  "compatibility_date": "2025-01-24",
+  "compatibility_date": "2024-12-30",
   "observability": {
     "enabled": true
   },

@@ -72,22 +72,26 @@ app.get('/self', async (c) => {
 })
 
 app.get('/deploy', async (c) => {
-  const res = await fetch('https://api.github.com/repos/OWNER/REPO/dispatches', {
+  const res = await fetch('https://api.github.com/repos/sonofmagic/host.sonofmagic.top/dispatches', {
     headers: {
       'Accept': 'application/vnd.github+json',
       'Authorization': `Bearer ${c.env.GITHUB_TOKEN}`,
       'X-GitHub-Api-Version': '2022-11-28',
+      // https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api?apiVersion=2022-11-28#user-agent-required
+      'User-Agent': 'Awesome-Octocat-App',
     },
     method: 'POST',
     body: JSON.stringify({
       event_type: 'deploy_cdn',
       client_payload: {
         ref: 'main',
+        unit: false,
+        integration: true,
       },
     }),
   })
-  const json = await res.json()
-  return c.json(json as object)
+  const text = await res.text()
+  return c.text(text)
 })
 
 showRoutes(app, {

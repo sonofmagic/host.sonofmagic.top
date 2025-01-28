@@ -31,6 +31,6 @@
     "@types/punycode": "^2.1.4",
     "cloudflare": "^4.0.0",
     "dotenv": "^16.4.7",
-    "wrangler": "^3.99.0"
+    "wrangler": "^3.106.0"
   }
 }

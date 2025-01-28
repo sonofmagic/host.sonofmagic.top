@@ -7,6 +7,9 @@ import { defineConfig } from 'vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
 // https://vite.dev/config/
 export default defineConfig({
+  build: {
+    outDir: '../host/public',
+  },
   plugins: [
     vueRouter(),
     vue(),

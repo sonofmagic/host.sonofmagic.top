@@ -2,5 +2,6 @@
 
 interface CloudflareBindings {
 	JWT_SECRET: string;
+	GITHUB_TOKEN: string;
 	DB: D1Database;
 }
