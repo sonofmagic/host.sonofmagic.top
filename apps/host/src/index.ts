@@ -54,8 +54,8 @@ app.post('/auth/login', async (c) => {
       id: user.id,
     }
     const token = await sign(payload, c.env.JWT_SECRET)
-    c.header('Set-Cookie', `token=${token}; Path=/; HttpOnly; Secure; SameSite=Strict`)
-    return c.text('Login successful')
+    // c.header('Set-Cookie', `token=${token}; Path=/; HttpOnly; Secure; SameSite=Strict`)
+    return c.text(token)
   }
   else {
     throw new HTTPException(400, {

@@ -22,5 +22,8 @@
     "crons": [
       "*/10 * * * *"
     ]
+  },
+  "assets": {
+    "directory": "public"
   }
 }
