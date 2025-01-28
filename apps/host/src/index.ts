@@ -2,9 +2,10 @@ import type { JwtVariables } from 'hono/jwt'
 import { Hono } from 'hono'
 import { showRoutes } from 'hono/dev'
 import { HTTPException } from 'hono/http-exception'
-import { jwt, sign } from 'hono/jwt'
+import { sign } from 'hono/jwt'
 import { getFirstIpRecord } from './get-dns-records'
 import { scheduledTask } from './schedule'
+import { jwt } from './simple-jwt'
 import { UPSERT } from './sql'
 
 type Variables = JwtVariables
@@ -44,6 +45,7 @@ app.get('/scheduled', async (ctx) => {
 
 app.post('/auth/login', async (c) => {
   const { email, password } = await c.req.json()
+  // todo
   const res = await c.env.DB.prepare('').bind([email, password]).run()
   const user = res.results[0]
   if (user) {
