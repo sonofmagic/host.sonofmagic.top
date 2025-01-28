@@ -4,11 +4,8 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '*/30 * * * *'
-  # repository_dispatch:
-  #   types: ['']
-
-# env:
-#   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  repository_dispatch:
+    types: [deploy_cdn]
 
 jobs:
   build:

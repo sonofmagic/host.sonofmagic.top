@@ -71,6 +71,25 @@ app.get('/self', async (c) => {
   return c.json(payload)
 })
 
+app.get('/deploy', async (c) => {
+  const res = await fetch('https://api.github.com/repos/OWNER/REPO/dispatches', {
+    headers: {
+      'Accept': 'application/vnd.github+json',
+      'Authorization': `Bearer ${c.env.GITHUB_TOKEN}`,
+      'X-GitHub-Api-Version': '2022-11-28',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      event_type: 'deploy_cdn',
+      client_payload: {
+        ref: 'main',
+      },
+    }),
+  })
+  const json = await res.json()
+  return c.json(json as object)
+})
+
 showRoutes(app, {
   verbose: true,
 })
