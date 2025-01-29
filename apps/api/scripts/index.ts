@@ -19,12 +19,12 @@ async function main() {
     path.resolve(__dirname, '../../cdn/public/index.html'),
     [
       '# https://github.com/sonofmagic/host.sonofmagic.top',
-      '\n',
+      '',
       ...hostList
         .map(
           x => `${x.ip} ${x.domain}`,
         ),
-      '\n',
+      '',
       `# ${iSOString}`,
     ].join('\n'),
   )

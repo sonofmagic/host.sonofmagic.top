@@ -1,85 +1,38 @@
-# Markdown Extension Examples
+# 私有化部署
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+你需要先准备一个 `cloudflare` 和一个 `github` 账号
 
-## Syntax Highlighting
+## 项目原理
 
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
-
-**Input**
-
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
-
-**Output**
-
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
+```mermaid
+flowchart TB
+    subgraph Cloudflare 服务
+    cdn["page(cdn)"]
+    dns[dns]
+    worker["worker
+    边缘计算节点"]
+    d1[d1]@{shape: cyl}
+    end
+    subgraph Github
+    github[action]
+    end
+    d1 --数据--> worker
+    github --部署--> cdn
+    github --定期触发--> github
+    worker -.手动触发.-> github
+    worker --请求--> dns
+    dns --返回ip--> worker
+    worker --更新数据--> d1
+    user[用户] --请求--> cdn
+    cdn --返回数据--> user
+    d1 --获取数据生成 host 文件--> github
+    admin --jwt--> worker
 ```
 
-## Custom Containers
+## 问题
 
-**Input**
+为什么不直接使用 `cloudflare worker` 来返回 `host` 呢？
 
-```md
-::: info
-This is an info box.
-:::
+因为 `cloudflare worker` 每天有限制请求的次数，可能会被击穿
 
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-```
-
-**Output**
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+所以不如使用 `cloudflare page` 然后动态生成 `host` 再同步到全世界

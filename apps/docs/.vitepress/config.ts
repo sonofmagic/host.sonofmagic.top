@@ -24,5 +24,8 @@ export default withMermaid(defineConfig({
       { icon: 'github', link: 'https://github.com/sonofmagic/host.sonofmagic.top' },
     ],
   },
+  mermaid: {
+
+  },
 }),
 )

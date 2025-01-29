@@ -1,55 +1,33 @@
----
-outline: deep
----
+# 快速开始
 
-# Runtime API Examples
+## 下载 SwitchHosts
 
-This page demonstrates usage of some of the runtime APIs provided by VitePress.
+访问 https://github.com/oldj/SwitchHosts/releases 下载对应系统版本的 `SwitchHosts`。
 
-The main `useData()` API can be used to access site, theme, and page data for the current page. It works in both `.md` and `.vue` files:
+比如 macOS 苹果芯片的 下载 `SwitchHosts_mac_arm64.dmg`, intel 芯片的 `SwitchHosts_mac_x64.dmg`
 
-```md
-<script setup>
-import { useData } from 'vitepress'
+windows 64位 `SwitchHosts_win_installer_x64.exe`, 32位 `SwitchHosts_win_ia3.exe`
 
-const { theme, page, frontmatter } = useData()
-</script>
+## 导入 https://host.sonofmagic.top/
 
-## Results
+> 通常这需要你的 `root` 权限，假如你是 `windows` 系统，请用右键 -> 系统管理员打开 `SwitchHosts`
 
-### Theme Data
+安装好 `SwitchHosts` 后打开，然后点击左上角的 `添加 hosts` 按钮，
 
-<pre>{{ theme }}</pre>
+选择类型为 `远程`
 
-### Page Data
+标题任意，比如 `host.sonofmagic.top`
 
-<pre>{{ page }}</pre>
+URL: `https://host.sonofmagic.top/`
 
-### Page Frontmatter
+自动刷新，选择 `每 5 分钟`, 或者其他任意的时间 (不要选择 `从不`)
 
-<pre>{{ frontmatter }}</pre>
-```
+然后点击 `确定`
 
-<script setup>
-import { useData } from 'vitepress'
+![](./import.png)
 
-const { site, theme, page, frontmatter } = useData()
-</script>
+这样就搞定了
 
-## Results
+## 手动刷新
 
-### Theme Data
-
-<pre>{{ theme }}</pre>
-
-### Page Data
-
-<pre>{{ page }}</pre>
-
-### Page Frontmatter
-
-<pre>{{ frontmatter }}</pre>
-
-## More
-
-Check out the documentation for the [full list of runtime APIs](https://vitepress.dev/reference/runtime-api#usedata).
+![](./edit.png)
