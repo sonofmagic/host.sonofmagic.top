@@ -1,4 +1,4 @@
-import { getFirstIpRecord } from './get-dns-records'
+import { getFirstIpRecord } from '@icebreakers/dns'
 import { GET_TABLE, UPSERT } from './sql'
 
 export async function scheduledTask(env: CloudflareBindings) {

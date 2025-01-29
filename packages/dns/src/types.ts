@@ -9,12 +9,3 @@ export interface DnsRecord {
   /** Record data: IP for A or AAAA, fqdn for CNAME, etc */
   data: string
 }
-
-export interface HostKV {
-  ip: string
-  domain: string
-}
-
-export interface QueryResult {
-  results?: Array<{ Domain: string, Ip: string }>
-}

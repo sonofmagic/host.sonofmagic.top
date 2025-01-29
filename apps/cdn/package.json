@@ -2,12 +2,20 @@
   "name": "cdn",
   "version": "1.0.0",
   "description": "",
-  "author": "",
+  "author": "ice breaker <1324318532@qq.com>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/cloudflare-workers.git",
+    "directory": "apps/cdn"
+  },
+  "bugs": {
+    "url": "https://github.com/sonofmagic/cloudflare-workers/issues"
+  },
   "keywords": [],
   "main": "index.js",
   "scripts": {
-    "deploy": "wrangler pages deploy public"
+    "deploy": "wrangler pages deploy public --project-name=host-pages"
   },
   "devDependencies": {
     "wrangler": "^3.106.0"

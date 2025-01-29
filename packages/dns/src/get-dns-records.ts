@@ -4,14 +4,12 @@ import { isDomain } from './utils'
 
 function bestDnsResolverForThisRuntime(): string {
   // @ts-ignore
-  // if (globalThis.navigator?.userAgent === 'Cloudflare-Workers') {
-  //   return 'cloudflare-dns'
-  // }
-  // else {
-  //   return 'google-dns'
-  // }
-  // peferred cloudflare-dns
-  return 'cloudflare-dns'
+  if (globalThis.navigator?.userAgent === 'Cloudflare-Workers') {
+    return 'cloudflare-dns'
+  }
+  else {
+    return 'google-dns'
+  }
 }
 
 export async function getDnsRecords(name: string, type: string = 'A', resolver?: string): Promise<DnsRecord[]> {

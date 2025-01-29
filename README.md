@@ -2,8 +2,9 @@
 
 ## Projects
 
-- [host](apps/host)
-- [@icebreakers/bar](packages/bar) - tsup(esbuild) build package template
+- [host](apps/api)
+- [cdn](apps/cdn)
+- [@icebreakers/dns](packages/dns) - tsup(esbuild) build package template
 
 ## Contributing
 

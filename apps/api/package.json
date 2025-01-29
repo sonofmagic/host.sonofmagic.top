@@ -4,7 +4,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sonofmagic/cloudflare-workers.git",
-    "directory": "apps/host"
+    "directory": "apps/api"
   },
   "bugs": {
     "url": "https://github.com/sonofmagic/cloudflare-workers/issues"
@@ -22,13 +22,11 @@
     "token": "tsx scripts/token.ts"
   },
   "dependencies": {
-    "@octokit/core": "^6.1.3",
-    "hono": "^4.6.19",
-    "punycode": "^2.3.1"
+    "@icebreakers/dns": "workspace:*",
+    "hono": "^4.6.19"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250124.3",
-    "@types/punycode": "^2.1.4",
     "cloudflare": "^4.0.0",
     "dotenv": "^16.4.7",
     "wrangler": "^3.106.0"
