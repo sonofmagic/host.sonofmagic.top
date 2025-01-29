@@ -3,6 +3,7 @@ import { config } from 'dotenv'
 import { sign } from 'hono/jwt'
 
 config()
+
 const payload = {
   sub: 'user',
   role: 'admin',

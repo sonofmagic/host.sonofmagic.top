@@ -19,7 +19,8 @@
     "d1:create": "wrangler d1 create host-db",
     "d1:list": "wrangler d1 list",
     "html": "tsx scripts/index.ts",
-    "token": "tsx scripts/token.ts"
+    "token": "tsx scripts/token.ts",
+    "init-data": "tsx scripts/init.ts"
   },
   "dependencies": {
     "@icebreakers/dns": "workspace:*",
