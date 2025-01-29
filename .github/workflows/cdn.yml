@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build
-        working-directory: ./apps/host
+        working-directory: ./apps/api
         run: pnpm run html
         env:
           CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
