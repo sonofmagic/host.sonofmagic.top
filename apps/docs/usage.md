@@ -24,10 +24,10 @@ URL: `https://host.sonofmagic.top/`
 
 然后点击 `确定`
 
-![](./import.png)
+![](/import.png)
 
 这样就搞定了
 
 ## 手动刷新
 
-![](./edit.png)
+![](/edit.png)

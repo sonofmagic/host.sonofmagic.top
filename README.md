@@ -1,10 +1,13 @@
 # cloudflare-workers
 
+## [详见使用文档 docs.host.sonofmagic.top](https://docs.host.sonofmagic.top/)
+
 ## Projects
 
 - [host](apps/api)
 - [cdn](apps/cdn)
-- [@icebreakers/dns](packages/dns) - tsup(esbuild) build package template
+- [docs](apps/docs)
+- [@icebreakers/dns](packages/dns) - get ip from global dns
 
 ## Contributing
 
