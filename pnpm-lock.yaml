@@ -129,15 +129,8 @@ importers:
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
-      wrangler:
-        specifier: ^3.106.0
-        version: 3.106.0(@cloudflare/workers-types@4.20250124.3)
 
-  apps/cdn:
-    devDependencies:
-      wrangler:
-        specifier: ^3.106.0
-        version: 3.106.0(@cloudflare/workers-types@4.20250124.3)
+  apps/cdn: {}
 
   apps/docs:
     devDependencies:

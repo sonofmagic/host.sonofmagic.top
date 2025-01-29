@@ -17,7 +17,5 @@
   "scripts": {
     "deploy": "wrangler pages deploy public --project-name=host-pages"
   },
-  "devDependencies": {
-    "wrangler": "^3.106.0"
-  }
+  "devDependencies": {}
 }
