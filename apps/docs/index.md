@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "拒绝DNS污染, 快使用"
-  text: "host.sonofmagic.top"
-  tagline: 使用 SwitchHosts 导入这个 url 吧!
+  name: "拒绝DNS污染"
+  text: 导入下方这个 URL 吧！
+  tagline: https://host.sonofmagic.top/
   actions:
     - theme: brand
       text: 快速开始
@@ -16,7 +16,7 @@ hero:
 
 features:
   - title: 全球 DNS
-    details: 使用 cloudflare 和 google 进行解析
+    details: 使用 cloudflare 和 google 进行 dns 解析
   - title: 定期更新
     details: 利用 cloudflare 全球 cdn 和 github action 进行定期更新
   - title: 私有化部署
