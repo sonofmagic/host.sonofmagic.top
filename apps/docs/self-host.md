@@ -2,38 +2,6 @@
 
 你需要先准备一个 `cloudflare` 和一个 `github` 账号
 
-## 项目原理
-
-```mermaid
-flowchart TB
-    subgraph Cloudflare 服务
-    cdn["page(cdn)"]
-    dns[dns]
-    worker["worker
-    边缘计算节点"]
-    d1[d1数据库]@{shape: cyl}
-    end
-    subgraph Github
-    github[action]
-    end
-    subgraph 用户组
-    user[普通用户]
-    admin["管理员"]
-    end
-    d1 --数据--> worker
-    github --生成 host 文件部署--> cdn
-    github --定期触发--> github
-    worker -.手动触发.-> github
-    worker --请求--> dns
-    dns --返回ip--> worker
-    worker --更新数据--> d1
-    user --请求--> cdn
-    cdn --返回数据--> user
-    d1 --获取数据--> github
-    admin --jwt认证--> worker
-    worker --定期触发获取最新ip更新d1--> worker
-```
-
 ## 目录结构
 
 - apps (应用目录)
@@ -49,3 +17,27 @@ flowchart TB
 其中你只需要在 `Cloudflare` 上创建对应的 `Pages` 资源即可
 
 其余的部分可交给 `wrangler` 进行处理和部署
+
+## 需求变量
+
+> 这些 `变量` 都不可以暴露到外部场合！
+
+### CLOUDFLARE_EMAIL
+
+`Cloudflare` 注册邮箱
+
+### CLOUDFLARE_API_TOKEN
+
+`Cloudflare` api token, 需要生成，并设置编辑权限
+
+### CLOUDFLARE_DATABASE_ID
+
+`Cloudflare` d1 的数据库 id , uuid 格式
+
+### CLOUDFLARE_ACCOUNT_ID
+
+`Cloudflare` account id, 可在计算右侧页面查看和复杂
+
+### JWT_SECRET
+
+`JWT` 密钥，随便填, 尽量复杂一些
