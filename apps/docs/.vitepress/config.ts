@@ -16,6 +16,7 @@ export default withMermaid(defineConfig({
         items: [
           { text: '如何使用', link: '/usage' },
           { text: '如何私有化部署', link: '/self-host' },
+          { text: '常见问题', link: '/q&a' },
         ],
       },
     ],

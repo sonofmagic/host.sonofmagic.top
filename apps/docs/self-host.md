@@ -34,10 +34,18 @@ flowchart TB
     worker --定期触发获取最新ip更新d1--> worker
 ```
 
-## 思考问题
+## 目录结构
 
-### 为什么不直接使用 `cloudflare worker` 来返回 `host` 呢？
+- apps (应用目录)
+  - api (cloudflare worker 代码)
+  - cdn (cdn 静态资源, 用来部署 host 文件)
+  - docs (本文档，可忽略)
+  - mgmt (管理后台，可忽略)
 
-因为 `cloudflare worker` 每天有限制请求的次数，可能会被击穿影响服务
+## 部署
 
-所以不如使用 `cloudflare page` 然后动态生成 `host` 再同步到全世界
+简单点说就是，直接 `fork` 这个项目，然后填充环境变量，即可部署
+
+其中你只需要在 `Cloudflare` 上创建对应的 `Pages` 资源即可
+
+其余的部分可交给 `wrangler` 进行处理和部署
