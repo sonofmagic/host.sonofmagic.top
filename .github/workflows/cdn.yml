@@ -3,7 +3,7 @@ name: Deploy Cloudflare CDN
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '* */12 * * *'
   repository_dispatch:
     types: [deploy_cdn]
 
