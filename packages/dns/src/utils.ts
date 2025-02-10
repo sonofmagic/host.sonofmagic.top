@@ -1,11 +1,11 @@
-import { toASCII } from 'punycode/'
+import { domainToASCII } from 'node:url'
 
 export function isTld(tld: string): boolean {
   if (tld.startsWith('.')) {
     tld = tld.substring(1)
   }
 
-  return /^(?:[a-z]{2,64}|xn[a-z0-9-]{5,})$/i.test(toASCII(tld))
+  return /^(?:[a-z]{2,64}|xn[a-z0-9-]{5,})$/i.test(domainToASCII(tld))
 }
 
 /**
@@ -19,7 +19,7 @@ export function isDomain(domain: string): boolean {
     domain = domain.substring(0, domain.length - 1)
   }
 
-  const labels = toASCII(domain).split('.').reverse()
+  const labels = domainToASCII(domain).split('.').reverse()
   const labelTest = /^(?:[\w-]{1,64}|xn[a-z0-9-]{5,})$/i
 
   return labels.length > 1 && labels.every((label, index) => {

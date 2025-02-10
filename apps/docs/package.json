@@ -2,6 +2,7 @@
   "name": "docs",
   "type": "module",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "author": "ice breaker <1324318532@qq.com>",
   "license": "ISC",
