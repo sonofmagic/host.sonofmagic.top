@@ -21,6 +21,7 @@ async function main() {
       '# https://github.com/sonofmagic/host.sonofmagic.top',
       '',
       ...hostList
+        .filter(x => x.ip && x.domain)
         .map(
           x => `${x.ip} ${x.domain}`,
         ),
