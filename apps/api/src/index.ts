@@ -3,9 +3,8 @@ import { getFirstIpRecord, getSubDomains } from '@icebreakers/dns'
 import { Hono } from 'hono'
 import { showRoutes } from 'hono/dev'
 import { HTTPException } from 'hono/http-exception'
-import { sign } from 'hono/jwt'
+import { jwt, sign } from 'hono/jwt'
 import { scheduledTask } from './schedule'
-import { jwt } from './simple-jwt'
 import { UPSERT } from './sql'
 
 type Variables = JwtVariables
