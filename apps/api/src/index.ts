@@ -72,7 +72,7 @@ app.get('/self', async (c) => {
 })
 
 app.get('/deploy', async (c) => {
-  const res = await fetch('https://api.github.com/repos/sonofmagic/host.sonofmagic.top/dispatches', {
+  const res = await fetch(`https://api.github.com/repos/${c.env.GITHUB_USER}/${c.env.GITHUB_REPO}/dispatches`, {
     headers: {
       'Accept': 'application/vnd.github+json',
       'Authorization': `Bearer ${c.env.GITHUB_TOKEN}`,
