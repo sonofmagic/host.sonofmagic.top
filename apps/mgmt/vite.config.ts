@@ -2,6 +2,7 @@ import { fileURLToPath, URL } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import path from 'pathe'
 import vueRouter from 'unplugin-vue-router/vite'
 import { defineConfig } from 'vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
@@ -11,7 +12,9 @@ export default defineConfig({
     outDir: '../api/public',
   },
   plugins: [
-    vueRouter(),
+    vueRouter({
+      dts: path.resolve(import.meta.url, './typed-router.d.ts'),
+    }),
     vue(),
     vueJsx(),
     vueDevTools(),
