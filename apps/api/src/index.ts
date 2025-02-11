@@ -1,5 +1,5 @@
 import type { JwtVariables } from 'hono/jwt'
-import { getFirstIpRecord } from '@icebreakers/dns'
+import { getFirstIpRecord, getSubDomains } from '@icebreakers/dns'
 import { Hono } from 'hono'
 import { showRoutes } from 'hono/dev'
 import { HTTPException } from 'hono/http-exception'
@@ -25,16 +25,46 @@ app.use('/*', async (c, next) => {
 app.get('/add', async (ctx) => {
   const { env } = ctx
   const { name } = ctx.req.query()
+
   if (!name) {
     return ctx.text('No domain name provided')
   }
 
-  const firstIpRecord = await getFirstIpRecord(name)
-  if (firstIpRecord) {
-    await env.DB.prepare(UPSERT).bind(name, firstIpRecord.data).run()
+  const subDomains = await getSubDomains(name)
+  const hosts: { domain: string, ip: string }[] = []
+
+  // 等待所有 DNS 查询完成
+  await Promise.allSettled(subDomains.map(async (domain) => {
+    const firstIpRecord = await getFirstIpRecord(domain)
+    if (firstIpRecord) {
+      hosts.push({ domain, ip: firstIpRecord.data })
+    }
+  }))
+
+  // 如果没有找到任何记录，提前返回
+  if (hosts.length === 0) {
+    return ctx.text('No valid DNS records found')
   }
 
-  return ctx.text(`Added ${name}, Ip: ${firstIpRecord?.data}`)
+  try {
+    // 为每个 host 创建独立的 prepared statement
+    const statements = hosts.map(host =>
+      env.DB.prepare(UPSERT).bind(host.domain, host.ip),
+    )
+
+    // 执行批处理操作
+    const results = await env.DB.batch(statements)
+
+    // 可以添加结果验证
+    const totalUpdated = results.reduce((sum, result) => sum + result.meta.changes, 0)
+
+    return ctx.text(`Added ${name} and its subdomains. Updated ${totalUpdated} records.`)
+  }
+  catch (error) {
+    // 错误处理
+    console.error('Failed to update database:', error)
+    return ctx.text('Failed to update database', 500)
+  }
 })
 
 app.get('/scheduled', async (ctx) => {
@@ -71,7 +101,7 @@ app.get('/self', async (c) => {
 })
 
 app.get('/deploy', async (c) => {
-  const res = await fetch('https://api.github.com/repos/sonofmagic/host.sonofmagic.top/dispatches', {
+  const res = await fetch(`https://api.github.com/repos/${c.env.GITHUB_USER}/${c.env.GITHUB_REPO}/dispatches`, {
     headers: {
       'Accept': 'application/vnd.github+json',
       'Authorization': `Bearer ${c.env.GITHUB_TOKEN}`,
