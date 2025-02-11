@@ -13,7 +13,7 @@ export default defineConfig({
   },
   plugins: [
     vueRouter({
-      dts: path.resolve(import.meta.url, './typed-router.d.ts'),
+      dts: path.resolve(import.meta.dirname, './typed-router.d.ts'),
     }),
     vue(),
     vueJsx(),
