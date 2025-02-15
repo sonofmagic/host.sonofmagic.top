@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`get-sub-domains > sonofmagic.top 1`] = `
+[
+  "docs.host.sonofmagic.top",
+  "api.host.sonofmagic.top",
+  "sonofmagic.top",
+  "host.sonofmagic.top",
+  "dev.host.sonofmagic.top",
+]
+`;

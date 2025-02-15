@@ -1,6 +1,6 @@
 import type { DnsRecord } from './types'
 import { domainToASCII } from 'node:url'
-// https://github.com/LayeredStudio/dns-records
+
 const dnsTypeNumbers: { [key: number]: string } = {
   1: 'A',
   2: 'NS',
