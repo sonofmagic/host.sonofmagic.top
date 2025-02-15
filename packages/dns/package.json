@@ -1,6 +1,6 @@
 {
   "name": "@icebreakers/dns",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "get ip from global dns",
   "author": "ice breaker <1324318532@qq.com>",
   "license": "MIT",
