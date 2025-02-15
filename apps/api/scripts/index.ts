@@ -7,8 +7,8 @@ async function main() {
   // await query('init.sql')
   // await query('upsert.sql', ['content.nuxt.com', '104.18.7.73'])
   // await query('upsert.sql', ['nuxt.com', '76.76.21.21'])
-  const res = await query('list.sql') as QueryResult[]
-  const hostList = res[0].results?.map((x) => {
+  const res = await query('list.sql')
+  const hostList = (res.result[0] as QueryResult).results?.map((x) => {
     return {
       domain: x.Domain,
       ip: x.Ip,
