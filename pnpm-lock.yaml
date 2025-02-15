@@ -128,6 +128,10 @@ importers:
       hono:
         specifier: ^4.7.1
         version: 4.7.1
+    devDependencies:
+      wrangler:
+        specifier: ^3.109.1
+        version: 3.109.1(@cloudflare/workers-types@4.20250214.0)
 
   apps/cdn: {}
 
