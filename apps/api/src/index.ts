@@ -4,6 +4,7 @@ import { Hono } from 'hono'
 // import { showRoutes } from 'hono/dev'
 import { HTTPException } from 'hono/http-exception'
 import { jwt, sign } from 'hono/jwt'
+import { dispatchAction } from './github'
 import { scheduledTask } from './schedule'
 import { UPSERT } from './sql'
 
@@ -101,23 +102,10 @@ app.get('/self', async (c) => {
 })
 
 app.get('/deploy', async (c) => {
-  const res = await fetch(`https://api.github.com/repos/${c.env.GITHUB_USER}/${c.env.GITHUB_REPO}/dispatches`, {
-    headers: {
-      'Accept': 'application/vnd.github+json',
-      'Authorization': `Bearer ${c.env.GITHUB_TOKEN}`,
-      'X-GitHub-Api-Version': '2022-11-28',
-      // https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api?apiVersion=2022-11-28#user-agent-required
-      'User-Agent': 'Awesome-Octocat-App',
-    },
-    method: 'POST',
-    body: JSON.stringify({
-      event_type: 'deploy_cdn',
-      client_payload: {
-        ref: 'main',
-        unit: false,
-        integration: true,
-      },
-    }),
+  const res = await dispatchAction({
+    repo: c.env.GITHUB_REPO,
+    token: c.env.GITHUB_TOKEN,
+    user: c.env.GITHUB_USER,
   })
   const text = await res.text()
   return c.text(text)
