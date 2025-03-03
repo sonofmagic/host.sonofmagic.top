@@ -1,7 +1,7 @@
 import type { JwtVariables } from 'hono/jwt'
 import { getFirstIpRecord, getSubDomains } from '@icebreakers/dns'
 import { Hono } from 'hono'
-import { showRoutes } from 'hono/dev'
+// import { showRoutes } from 'hono/dev'
 import { HTTPException } from 'hono/http-exception'
 import { jwt, sign } from 'hono/jwt'
 import { scheduledTask } from './schedule'
@@ -123,9 +123,9 @@ app.get('/deploy', async (c) => {
   return c.text(text)
 })
 
-showRoutes(app, {
-  verbose: true,
-})
+// showRoutes(app, {
+//   verbose: true,
+// })
 
 export default {
   fetch: app.fetch,
