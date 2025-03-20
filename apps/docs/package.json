@@ -22,9 +22,8 @@
     "preview": "vitepress preview",
     "deploy": "wrangler pages deploy .vitepress/dist --project-name=host-docs"
   },
-  "dependencies": {},
   "devDependencies": {
-    "mermaid": "^11.4.1",
+    "mermaid": "^11.5.0",
     "vitepress": "^1.6.3",
     "vitepress-plugin-mermaid": "^2.0.17"
   }
