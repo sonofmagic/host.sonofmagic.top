@@ -25,9 +25,9 @@
   },
   "dependencies": {
     "@icebreakers/dns": "workspace:*",
-    "hono": "^4.7.5"
+    "hono": "^4.7.9"
   },
   "devDependencies": {
-    "wrangler": "^4.3.0"
+    "wrangler": "^4.14.4"
   }
 }
