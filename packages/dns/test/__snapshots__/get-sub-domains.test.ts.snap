@@ -2,10 +2,10 @@
 
 exports[`get-sub-domains > sonofmagic.top 1`] = `
 [
-  "docs.host.sonofmagic.top",
   "api.host.sonofmagic.top",
-  "sonofmagic.top",
-  "host.sonofmagic.top",
   "dev.host.sonofmagic.top",
+  "docs.host.sonofmagic.top",
+  "host.sonofmagic.top",
+  "sonofmagic.top",
 ]
 `;
