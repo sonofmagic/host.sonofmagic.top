@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'apps/docs/**'
+    branches:
+      - main
   workflow_dispatch:
   repository_dispatch:
     types: [deploy_docs]
