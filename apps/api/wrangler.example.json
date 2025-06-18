@@ -27,6 +27,7 @@
     ]
   },
   "assets": {
-    "directory": "public"
+    "directory": "public",
+    "not_found_handling": "single-page-application"
   }
 }

@@ -21,13 +21,23 @@
     "d1:list": "wrangler d1 list",
     "html": "tsx scripts/index.ts",
     "token": "tsx scripts/token.ts",
-    "init-data": "tsx scripts/init.ts"
+    "init-data": "tsx scripts/init.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:up": "drizzle-kit up",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:migrate": "drizzle-kit migrate",
+    "db:check": "drizzle-kit check",
+    "db:pull": "drizzle-kit pull"
   },
   "dependencies": {
     "@icebreakers/dns": "workspace:*",
+    "bcryptjs": "^3.0.2",
+    "drizzle-orm": "^0.44.2",
     "hono": "^4.8.0"
   },
   "devDependencies": {
+    "drizzle-kit": "^0.31.1",
     "wrangler": "^4.20.1"
   }
 }

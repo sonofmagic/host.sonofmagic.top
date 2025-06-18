@@ -9,8 +9,8 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "types": [
-      "@cloudflare/workers-types/2023-07-01",
-      "node"
+      "node",
+      "./worker-configuration.d.ts"
     ],
     "strict": true,
     "skipLibCheck": true

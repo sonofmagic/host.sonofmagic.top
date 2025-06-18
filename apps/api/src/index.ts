@@ -1,7 +1,6 @@
 import type { JwtVariables } from 'hono/jwt'
 import { getFirstIpRecord, getSubDomains } from '@icebreakers/dns'
 import { Hono } from 'hono'
-// import { showRoutes } from 'hono/dev'
 import { HTTPException } from 'hono/http-exception'
 import { jwt, sign } from 'hono/jwt'
 import { dispatchAction } from './github'
@@ -11,12 +10,12 @@ import { UPSERT } from './sql'
 type Variables = JwtVariables
 const app = new Hono<{ Bindings: CloudflareBindings, Variables: Variables }>()
 
-app.use('/*', async (c, next) => {
+app.use((c, next) => {
   const jwtMiddleware = jwt({
     secret: c.env.JWT_SECRET,
   })
   if (c.req.path.startsWith('/auth')) {
-    return await next()
+    return next()
   }
   else {
     return jwtMiddleware(c, next)
