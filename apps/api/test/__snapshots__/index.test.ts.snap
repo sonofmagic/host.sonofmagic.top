@@ -1,0 +1,26 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`sql > css 1`] = `undefined`;
+
+exports[`sql > should work 1`] = `
+SQL {
+  "decoder": {
+    "mapFromDriverValue": [Function],
+  },
+  "queryChunks": [
+    StringChunk {
+      "value": [
+        "1 ",
+      ],
+    },
+    "12",
+    StringChunk {
+      "value": [
+        "",
+      ],
+    },
+  ],
+  "shouldInlineParams": false,
+  "usedTables": [],
+}
+`;

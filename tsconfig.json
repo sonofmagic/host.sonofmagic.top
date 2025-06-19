@@ -12,5 +12,8 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": [
+    "**/dist"
+  ]
 }

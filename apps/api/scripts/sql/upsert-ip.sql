@@ -1,4 +1,0 @@
-INSERT INTO MAP (Domain, Ip)
-VALUES (?, NULL) ON CONFLICT(Domain) DO
-UPDATE
-SET Ip = COALESCE(MAP.Ip, excluded.Ip);

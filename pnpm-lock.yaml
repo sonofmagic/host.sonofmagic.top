@@ -174,6 +174,9 @@ importers:
         specifier: ^4.5.1
         version: 4.5.1(vue@3.5.17(typescript@5.8.3))
     devDependencies:
+      '@cloudflare/vite-plugin':
+        specifier: ^1.7.2
+        version: 1.7.2(rollup@4.41.1)(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.0))(workerd@1.20250617.0)(wrangler@4.20.3(@cloudflare/workers-types@4.20250619.0))
       '@tailwindcss/vite':
         specifier: ^4.1.10
         version: 4.1.10(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.0))
@@ -677,6 +680,12 @@ packages:
     peerDependenciesMeta:
       workerd:
         optional: true
+
+  '@cloudflare/vite-plugin@1.7.2':
+    resolution: {integrity: sha512-Z7hmgowjorRQulx/5o0ZtPiDBtqWX3/sX14jBEpaH6rGSLv8LsNCC+AkcCf8QgBL6CGgBNx9ATe+XxqN/4NL9w==}
+    peerDependencies:
+      vite: ^6.1.0
+      wrangler: ^3.101.0 || ^4.0.0
 
   '@cloudflare/workerd-darwin-64@1.20250617.0':
     resolution: {integrity: sha512-toG8JUKVLIks4oOJLe9FeuixE84pDpMZ32ip7mCpE7JaFc5BqGFvevk0YC/db3T71AQlialjRwioH3jS/dzItA==}
@@ -2147,6 +2156,9 @@ packages:
 
   '@mermaid-js/parser@0.4.0':
     resolution: {integrity: sha512-wla8XOWvQAwuqy+gxiZqY+c7FokraOTHRWMsbB4AgRx9Sy7zKslNyejy7E+a77qHfey5GXw/ik3IXv/NHMJgaA==}
+
+  '@mjackson/node-fetch-server@0.6.1':
+    resolution: {integrity: sha512-9ZJnk/DJjt805uv5PPv11haJIW+HHf3YEEyVXv+8iLQxLD/iXA68FH220XoiTPBC4gCg5q+IMadDw8qPqlA5wg==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -5831,6 +5843,10 @@ packages:
   get-npm-tarball-url@2.1.0:
     resolution: {integrity: sha512-ro+DiMu5DXgRBabqXupW38h7WPZ9+Ad8UjwhvsmmN8w1sU7ab0nzAXvVZ4kqYg57OrqomRtJvepX5/xvFKNtjA==}
     engines: {node: '>=12.17'}
+
+  get-port@7.1.0:
+    resolution: {integrity: sha512-QB9NKEeDg3xxVwCCwJQ9+xycaz6pBB6iQ76wiWMl1927n0Kir6alPiP+yuiICLLU4jpMe08dXfpebuQppFA2zw==}
+    engines: {node: '>=16'}
 
   get-proto@1.0.1:
     resolution: {integrity: sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==}
@@ -10216,6 +10232,25 @@ snapshots:
     optionalDependencies:
       workerd: 1.20250617.0
 
+  '@cloudflare/vite-plugin@1.7.2(rollup@4.41.1)(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.0))(workerd@1.20250617.0)(wrangler@4.20.3(@cloudflare/workers-types@4.20250619.0))':
+    dependencies:
+      '@cloudflare/unenv-preset': 2.3.3(unenv@2.0.0-rc.17)(workerd@1.20250617.0)
+      '@mjackson/node-fetch-server': 0.6.1
+      '@rollup/plugin-replace': 6.0.2(rollup@4.41.1)
+      get-port: 7.1.0
+      miniflare: 4.20250617.1
+      picocolors: 1.1.1
+      tinyglobby: 0.2.14
+      unenv: 2.0.0-rc.17
+      vite: 6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.0)
+      wrangler: 4.20.3(@cloudflare/workers-types@4.20250619.0)
+      ws: 8.18.0
+    transitivePeerDependencies:
+      - bufferutil
+      - rollup
+      - utf-8-validate
+      - workerd
+
   '@cloudflare/workerd-darwin-64@1.20250617.0':
     optional: true
 
@@ -11393,6 +11428,8 @@ snapshots:
     dependencies:
       langium: 3.3.1
 
+  '@mjackson/node-fetch-server@0.6.1': {}
+
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -12379,14 +12416,29 @@ snapshots:
 
   '@rollup/plugin-replace@6.0.2(rollup@4.34.9)':
     dependencies:
-      '@rollup/pluginutils': 5.1.4(rollup@4.34.9)
+      '@rollup/pluginutils': 5.2.0(rollup@4.34.9)
       magic-string: 0.30.17
     optionalDependencies:
       rollup: 4.34.9
 
+  '@rollup/plugin-replace@6.0.2(rollup@4.41.1)':
+    dependencies:
+      '@rollup/pluginutils': 5.2.0(rollup@4.41.1)
+      magic-string: 0.30.17
+    optionalDependencies:
+      rollup: 4.41.1
+
   '@rollup/pluginutils@5.1.4(rollup@4.34.9)':
     dependencies:
       '@types/estree': 1.0.6
+      estree-walker: 2.0.2
+      picomatch: 4.0.2
+    optionalDependencies:
+      rollup: 4.34.9
+
+  '@rollup/pluginutils@5.2.0(rollup@4.34.9)':
+    dependencies:
+      '@types/estree': 1.0.8
       estree-walker: 2.0.2
       picomatch: 4.0.2
     optionalDependencies:
@@ -15910,6 +15962,8 @@ snapshots:
       math-intrinsics: 1.1.0
 
   get-npm-tarball-url@2.1.0: {}
+
+  get-port@7.1.0: {}
 
   get-proto@1.0.1:
     dependencies:

@@ -28,7 +28,9 @@
     "db:studio": "drizzle-kit studio",
     "db:migrate": "drizzle-kit migrate",
     "db:check": "drizzle-kit check",
-    "db:pull": "drizzle-kit pull"
+    "db:pull": "drizzle-kit pull",
+    "test": "vitest run",
+    "test:dev": "vitest"
   },
   "dependencies": {
     "@hono/zod-openapi": "^0.19.8",
