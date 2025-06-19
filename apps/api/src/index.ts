@@ -8,7 +8,7 @@ import { scheduledTask } from './schedule'
 import { UPSERT } from './sql'
 
 type Variables = JwtVariables
-const app = new Hono<{ Bindings: CloudflareBindings, Variables: Variables }>()
+const app = new Hono<{ Bindings: Env, Variables: Variables }>()
 
 app.use((c, next) => {
   const jwtMiddleware = jwt({
@@ -122,4 +122,4 @@ export default {
   scheduled(_event, env, ctx) {
     ctx.waitUntil(scheduledTask(env))
   },
-} satisfies ExportedHandler<CloudflareBindings>
+} satisfies ExportedHandler<Env>

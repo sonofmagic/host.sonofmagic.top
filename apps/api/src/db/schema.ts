@@ -1,6 +1,16 @@
-import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
+import { numeric, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
-export const users = sqliteTable('users', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
-  name: text('name').notNull(),
+export const map = sqliteTable('MAP', {
+  domain: text('Domain').primaryKey(),
+  ip: text('Ip'),
+})
+
+export const user = sqliteTable('USERS', {
+  id: text('Id').primaryKey(),
+  name: text('Name'),
+  email: text('Email'),
+  password: text('Password'),
+  salt: text('Salt'),
+  createdAt: numeric('CreatedAt'),
+  updatedAt: numeric('UpdatedAt'),
 })

@@ -1,24 +1,83 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "ee96f6f5-9a9f-4a78-96d6-635c15e5dcf8",
+  "id": "b7b1e649-9fad-400f-9669-b057897a81a5",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
-    "users": {
-      "name": "users",
+    "MAP": {
+      "name": "MAP",
       "columns": {
-        "id": {
-          "name": "id",
-          "type": "integer",
+        "Domain": {
+          "name": "Domain",
+          "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": true
+          "autoincrement": false
         },
-        "name": {
-          "name": "name",
+        "Ip": {
+          "name": "Ip",
           "type": "text",
           "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "USERS": {
+      "name": "USERS",
+      "columns": {
+        "Id": {
+          "name": "Id",
+          "type": "text",
+          "primaryKey": true,
           "notNull": true,
+          "autoincrement": false
+        },
+        "Name": {
+          "name": "Name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "Email": {
+          "name": "Email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "Password": {
+          "name": "Password",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "Salt": {
+          "name": "Salt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "CreatedAt": {
+          "name": "CreatedAt",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "UpdatedAt": {
+          "name": "UpdatedAt",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false,
           "autoincrement": false
         }
       },

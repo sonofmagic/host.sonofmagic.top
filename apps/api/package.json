@@ -15,7 +15,7 @@
     "dev:scheduled": "wrangler dev --test-scheduled",
     "dev:remote": "wrangler dev --remote",
     "deploy": "wrangler deploy --minify",
-    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "cf-typegen": "wrangler types",
     "kv:list": "wrangler kv namespace list | jq \".\"",
     "d1:create": "wrangler d1 create host-db",
     "d1:list": "wrangler d1 list",
@@ -33,11 +33,13 @@
   "dependencies": {
     "@icebreakers/dns": "workspace:*",
     "bcryptjs": "^3.0.2",
+    "chanfana": "^2.8.1",
     "drizzle-orm": "^0.44.2",
-    "hono": "^4.8.0"
+    "hono": "^4.8.0",
+    "zod": "^3.25.67"
   },
   "devDependencies": {
     "drizzle-kit": "^0.31.1",
-    "wrangler": "^4.20.1"
+    "wrangler": "^4.20.3"
   }
 }
