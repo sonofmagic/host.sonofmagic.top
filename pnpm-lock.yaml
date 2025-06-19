@@ -122,15 +122,12 @@ importers:
 
   apps/api:
     dependencies:
-      '@icebreakers/dns':
-        specifier: workspace:*
-        version: link:../../packages/dns
+      '@hono/zod-openapi':
+        specifier: ^0.19.8
+        version: 0.19.8(hono@4.8.0)(zod@3.25.67)
       bcryptjs:
         specifier: ^3.0.2
         version: 3.0.2
-      chanfana:
-        specifier: ^2.8.1
-        version: 2.8.1
       drizzle-orm:
         specifier: ^0.44.2
         version: 0.44.2(@cloudflare/workers-types@4.20250619.0)
@@ -231,8 +228,6 @@ importers:
       vue-tsc:
         specifier: ^2.2.10
         version: 2.2.10(typescript@5.8.3)
-
-  packages/dns: {}
 
 packages:
 
@@ -1882,6 +1877,19 @@ packages:
   '@gwhitney/detect-indent@7.0.1':
     resolution: {integrity: sha512-7bQW+gkKa2kKZPeJf6+c6gFK9ARxQfn+FKy9ScTBppyKRWH2KzsmweXUoklqeEiHiNVWaeP5csIdsNq6w7QhzA==}
     engines: {node: '>=12.20'}
+
+  '@hono/zod-openapi@0.19.8':
+    resolution: {integrity: sha512-CHUSW0K+bDGUYXovxQSbVjZffzoPeTsGu6wevPoGSmBdPuUw5yZqDeomnvyAAAAvEjhLQPlAsUyASc1Zi35exQ==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      hono: '>=4.3.6'
+      zod: 3.*
+
+  '@hono/zod-validator@0.7.0':
+    resolution: {integrity: sha512-qe2ZE6sHFE98dcUrbYMtS3bAV8hqcCOflykvZga2S7XhmNSZzT+dIz4OuMILsjLHkJw9JMn912/dB7dQOmuPvg==}
+    peerDependencies:
+      hono: '>=3.9.0'
+      zod: ^3.25.0
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -4355,10 +4363,6 @@ packages:
   chalk@5.4.1:
     resolution: {integrity: sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
-
-  chanfana@2.8.1:
-    resolution: {integrity: sha512-iYNlH+pA2yXAV5YksIe/Wewr0b935+jot+cTDqdkyFAae2QzJ2t1t2/ShEMtUjHc8RdDb7IvPCDjZgtMl3Py8A==}
-    hasBin: true
 
   char-regex@1.0.2:
     resolution: {integrity: sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==}
@@ -9530,10 +9534,6 @@ packages:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
 
-  yargs-parser@22.0.0:
-    resolution: {integrity: sha512-rwu/ClNdSMpkSrUb+d6BRsSkLUq1fmfsY6TOpYzTwvwkg1/NRG85KBy3kq++A8LKQwX6lsu+aWad+2khvuXrqw==}
-    engines: {node: ^20.19.0 || ^22.12.0 || >=23}
-
   yargs@17.7.2:
     resolution: {integrity: sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==}
     engines: {node: '>=12'}
@@ -11068,6 +11068,18 @@ snapshots:
   '@fastify/busboy@2.1.1': {}
 
   '@gwhitney/detect-indent@7.0.1': {}
+
+  '@hono/zod-openapi@0.19.8(hono@4.8.0)(zod@3.25.67)':
+    dependencies:
+      '@asteasolutions/zod-to-openapi': 7.3.4(zod@3.25.67)
+      '@hono/zod-validator': 0.7.0(hono@4.8.0)(zod@3.25.67)
+      hono: 4.8.0
+      zod: 3.25.67
+
+  '@hono/zod-validator@0.7.0(hono@4.8.0)(zod@3.25.67)':
+    dependencies:
+      hono: 4.8.0
+      zod: 3.25.67
 
   '@humanfs/core@0.19.1': {}
 
@@ -14113,14 +14125,6 @@ snapshots:
       supports-color: 7.2.0
 
   chalk@5.4.1: {}
-
-  chanfana@2.8.1:
-    dependencies:
-      '@asteasolutions/zod-to-openapi': 7.3.4(zod@3.25.67)
-      js-yaml: 4.1.0
-      openapi3-ts: 4.4.0
-      yargs-parser: 22.0.0
-      zod: 3.25.67
 
   char-regex@1.0.2: {}
 
@@ -20216,8 +20220,6 @@ snapshots:
   yaml@2.8.0: {}
 
   yargs-parser@21.1.1: {}
-
-  yargs-parser@22.0.0: {}
 
   yargs@17.7.2:
     dependencies:

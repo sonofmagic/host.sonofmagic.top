@@ -18,7 +18,7 @@ export async function getSubDomains(domain: string): Promise<string[]> {
     if (!response.ok) {
       throw new Error(`Failed to fetch subdomains for ${domain}: ${response.statusText}`)
     }
-    const data = await response.json()
+    const data = await response.json() as any
     const subDomains = data.reduce((acc: string[], cert: Cert) => {
       const subDomain = cert.name_value.split('\n')
       subDomain.forEach((domain) => {
