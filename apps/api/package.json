@@ -33,14 +33,14 @@
     "test:dev": "vitest"
   },
   "dependencies": {
-    "@hono/zod-openapi": "^0.19.8",
+    "@hono/zod-openapi": "^1.0.2",
     "bcryptjs": "^3.0.2",
-    "drizzle-orm": "^0.44.2",
-    "hono": "^4.8.0",
-    "zod": "^3.25.67"
+    "drizzle-orm": "^0.44.3",
+    "hono": "^4.8.9",
+    "zod": "^4.0.11"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.31.1",
-    "wrangler": "^4.20.3"
+    "drizzle-kit": "^0.31.4",
+    "wrangler": "^4.26.0"
   }
 }
